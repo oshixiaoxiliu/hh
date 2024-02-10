@@ -5,37 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 7.1.1">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/hh/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/hh/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/hh/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/hh/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/hh/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/hh/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"oshixiaoxiliu.github.io","root":"/hh/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="本地笔记系统 obsidian方便整理笔记，需要有一套本地笔记系统，多种软件对比后，选择使用obsidian，有以下优势  开源免费，插件多，社区活跃 保存格式为md文本，方便同步云端和以后的迁移 还有一些其他文档、图片相互链接这些能力当然少不了要折腾各种功能和插件  博客系统考虑到可以把一些读书笔记分享出来，选择使用hexo 来搭建轻量的博客系统。可以自动产出静态站点，部署在github pag">
 <meta property="og:type" content="article">
 <meta property="og:title" content="obsidian + hexo + github pages 搭建博客系统">
-<meta property="og:url" content="http://example.com/2024/02/11/create-a-blog/index.html">
+<meta property="og:url" content="https://oshixiaoxiliu.github.io/hh/2024/02/11/create-a-blog/index.html">
 <meta property="og:site_name" content="hh的学习笔记">
 <meta property="og:description" content="本地笔记系统 obsidian方便整理笔记，需要有一套本地笔记系统，多种软件对比后，选择使用obsidian，有以下优势  开源免费，插件多，社区活跃 保存格式为md文本，方便同步云端和以后的迁移 还有一些其他文档、图片相互链接这些能力当然少不了要折腾各种功能和插件  博客系统考虑到可以把一些读书笔记分享出来，选择使用hexo 来搭建轻量的博客系统。可以自动产出静态站点，部署在github pag">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/images/create-a-blog-20240211-001622351.png">
-<meta property="og:image" content="http://example.com/images/create-a-blog-20240211-001858629.png">
+<meta property="og:image" content="https://oshixiaoxiliu.github.io/hh/images/create-a-blog-20240211-001622351.png">
+<meta property="og:image" content="https://oshixiaoxiliu.github.io/hh/images/create-a-blog-20240211-001858629.png">
 <meta property="article:published_time" content="2024-02-10T16:06:28.000Z">
 <meta property="article:modified_time" content="2024-02-10T16:23:41.435Z">
 <meta property="article:author" content="hh">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/create-a-blog-20240211-001622351.png">
+<meta name="twitter:image" content="https://oshixiaoxiliu.github.io/hh/images/create-a-blog-20240211-001622351.png">
 
-<link rel="canonical" href="http://example.com/2024/02/11/create-a-blog/">
+<link rel="canonical" href="https://oshixiaoxiliu.github.io/hh/2024/02/11/create-a-blog/">
 
 
 <script id="page-configurations">
@@ -97,7 +97,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/hh/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <h1 class="site-title">hh的学习笔记</h1>
       <span class="logo-line-after"><i></i></span>
@@ -117,12 +117,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/hh/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/hh/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
   </ul>
@@ -153,10 +153,10 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/11/create-a-blog/">
+    <link itemprop="mainEntityOfPage" href="https://oshixiaoxiliu.github.io/hh/2024/02/11/create-a-blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/hh/images/avatar.gif">
       <meta itemprop="name" content="hh">
       <meta itemprop="description" content="">
     </span>
@@ -214,13 +214,13 @@
 <li>obsidian 库中新建图片目录images，软连接到source&#x2F;images</li>
 <li>使用wiki 链接： 这个关闭，保持与markdown一样的图片插入语法，方便直接在hexo中使用 </li>
 <li>附件默认存放位置，设置为images目录</li>
-<li><img src="/images/create-a-blog-20240211-001622351.png"></li>
+<li><img src="/hh/images/create-a-blog-20240211-001622351.png"></li>
 <li>TODO： images文件太多怎么办</li>
 </ul>
 </li>
 <li>图片重命名：截图贴到obsidian的文件名<ul>
 <li>第三方插件 paste image rename </li>
-<li><img src="/images/create-a-blog-20240211-001858629.png"></li>
+<li><img src="/hh/images/create-a-blog-20240211-001858629.png"></li>
 <li>TODO： 其他文件重命名怎么办</li>
 </ul>
 </li>
@@ -310,7 +310,7 @@
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+          <a href="/hh/archives/">
         
           <span class="site-state-item-count">1</span>
           <span class="site-state-item-name">posts</span>
@@ -363,19 +363,19 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/hh/lib/anime.min.js"></script>
+  <script src="/hh/lib/velocity/velocity.min.js"></script>
+  <script src="/hh/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/hh/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
+<script src="/hh/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/hh/js/schemes/muse.js"></script>
+
+
+<script src="/hh/js/next-boot.js"></script>
 
 
 
