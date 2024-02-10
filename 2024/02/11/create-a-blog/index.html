@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://oshixiaoxiliu.github.io/hh/images/create-a-blog-20240211-001622351.png">
 <meta property="og:image" content="https://oshixiaoxiliu.github.io/hh/images/create-a-blog-20240211-001858629.png">
 <meta property="article:published_time" content="2024-02-10T16:06:28.000Z">
-<meta property="article:modified_time" content="2024-02-10T16:23:41.435Z">
+<meta property="article:modified_time" content="2024-02-10T16:43:49.790Z">
 <meta property="article:author" content="hh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://oshixiaoxiliu.github.io/hh/images/create-a-blog-20240211-001622351.png">
@@ -177,7 +177,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-02-11 00:06:28 / Modified: 00:23:41" itemprop="dateCreated datePublished" datetime="2024-02-11T00:06:28+08:00">2024-02-11</time>
+              <time title="Created: 2024-02-11 00:06:28 / Modified: 00:43:49" itemprop="dateCreated datePublished" datetime="2024-02-11T00:06:28+08:00">2024-02-11</time>
             </span>
 
           
@@ -208,6 +208,10 @@
 <li>然后生成和发布即可</li>
 </ul>
 <h2 id="一些配置点"><a href="#一些配置点" class="headerlink" title="一些配置点"></a>一些配置点</h2><ul>
+<li>云盘同步问题： <ul>
+<li>需要同步的都放到同步目录下，然后软连接到使用目录</li>
+</ul>
+</li>
 <li>obsidian 和 hexo 同步问题<ul>
 <li>markdown文件同步：obsidian 库中新建myblog，软连接到source&#x2F;_posts</li>
 <li>图片同步：<ul>
@@ -226,9 +230,18 @@
 </li>
 </ul>
 </li>
-<li>github pages 发布问题</li>
+<li>github pages 发布问题<ul>
+<li>github pages 开通参考 <a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">Creating a GitHub Pages site - GitHub Docs</a> </li>
+<li>参考 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/one-command-deployment">部署 | Hexo</a> 一键部署</li>
+<li>hexo 中 设置_config.yml<ul>
+<li>url 设置为对应的github.io域名</li>
+<li>deploy配置</li>
 </ul>
-
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:USERNAME/REPONAME.git</span><br><span class="line">  branch: gh-pages</span><br><span class="line">  message: deploy-git</span><br></pre></td></tr></table></figure>
     </div>
 
     
