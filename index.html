@@ -168,10 +168,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2024-02-11 15:24:00 / Modified: 23:52:46" itemprop="dateCreated datePublished" datetime="2024-02-11T15:24:00+08:00">2024-02-11</time>
+              <time title="Created: 2024-02-11 15:24:00" itemprop="dateCreated datePublished" datetime="2024-02-11T15:24:00+08:00">2024-02-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2024-02-12 00:25:25" itemprop="dateModified" datetime="2024-02-12T00:25:25+08:00">2024-02-12</time>
+              </span>
 
           
 
@@ -286,6 +292,15 @@
 <li>LLM：为代理提供动力的语言模型。</li>
 <li>代理：highest level API、custom agent</li>
 </ul>
+<p>根据文档，代理的高级伪代码大致如下：</p>
+<ol>
+<li>接收用户输入。</li>
+<li>代理根据输入决定是否使用某个工具，以及该工具的输入应该是什么。</li>
+<li>调用该工具，并记录观测结果（即使用该工具和输入调用后得到的输出）。</li>
+<li>将工具、工具输入和观测结果的历史传递回代理，代理决定下一步应该采取的步骤。</li>
+<li>重复上述步骤，直到代理决定不再需要使用工具，然后直接向用户作出回应。<br>这个过程会一直重复，直到代理决定不再需要使用工具，然后直接回应用户。</li>
+</ol>
+<p><img src="/hh/images/Langchain%E5%AD%A6%E4%B9%A0-20240211-235542092.png"></p>
 <h4 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h4><p>工具是代理可以用来与世界交互的功能。这些工具可以是通用实用程序（例如搜索）、其他链，比如：</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/tools/examples/bash.html">Bash</a> 在终端中执行命令。输入应该是有效的命令，输出将是运行该命令的任何输出。</li>
@@ -302,11 +317,44 @@
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/tools/examples/wolfram_alpha.html">Wolfram Alpha</a> 当您需要回答有关数学、科学、技术、文化、社会和日常生活的问题时很有用。输入应该是搜索查询。</li>
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/en/latest/modules/agents/tools/examples/zapier.html">Zapier Natural Language Actions API</a> 可以通过自然语言 API 接口访问 Zapier 平台上的 5k+ 应用程序和 20k+ 操作</li>
 </ul>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="chat-model-是什么？"><a href="#chat-model-是什么？" class="headerlink" title="chat model 是什么？"></a>chat model 是什么？</h2><p>聊天模型是语言模型的一种变体。 虽然聊天模型在内部使用语言模型，但它们公开的接口略有不同。 它们不是公开“文本输入，文本输出”API，而是公开一个接口，其中“聊天消息”是输入和输出。</p>
+<p>聊天模型API是相当新的，因此我们仍在探索正确的抽象。</p>
+<h2 id="Agent具体是怎么实现的？"><a href="#Agent具体是怎么实现的？" class="headerlink" title="Agent具体是怎么实现的？"></a>Agent具体是怎么实现的？</h2><p>**&#x3D;&#x3D;代理使用LLM（语言模型)来确定应采取哪些操作以及以何顺序执行这些操作&#x3D;&#x3D;**。<br>动作可能是使用工具并观察其输出，或向用户返回响应。<br>以下是LangChain中可用的代理：</p>
+<ul>
+<li><code>zero-shot-react-description</code> 此代理使用ReAct框架，&#x3D;&#x3D;仅基于工具的描述来确定要使用的工具。&#x3D;&#x3D;<ul>
+<li><em>Zero-shot</em> 意味着代理 (Agents) 仅在当前操作上起作用——它没有 <em>记忆_。它使用 <em>ReAct</em> 框架根据工具的 <code>描述 description</code> 来决定使用哪个工具。可以将其视为 LLM 可以循环进行</em> <em>Re</em> <em>asoning 和</em> <em>Act</em> _ion 步骤的过程。它启用了一个多步骤的过程来识别答案。</li>
+</ul>
+</li>
+<li><code>react-docstore</code> 这个代理使用ReAct框架与文档存储进行交互。</li>
+</ul>
+<p>相关材料</p>
+<ul>
+<li>重要论文 ReAct： <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/624003116">ReAct论文解读：LLM ReAct范式，在大语言模型中结合推理和动作 - 知乎 (zhihu.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://react-lm.github.io/">ReAct: Synergizing Reasoning and Acting in Language Models (react-lm.github.io)</a></li>
+<li>agent 的prompt模板<br><img src="/hh/images/Langchain%E5%AD%A6%E4%B9%A0-20240212-001422861.png"></li>
+</ul>
+<h2 id="Agent-示例"><a href="#Agent-示例" class="headerlink" title="Agent 示例"></a>Agent 示例</h2><h4 id="自主代理-Autonomous-agents"><a href="#自主代理-Autonomous-agents" class="headerlink" title="自主代理 Autonomous_agents"></a>自主代理 Autonomous_agents</h4><p>自主代理是旨在更长期运行的代理。 您向它们提供一个或多个长期目标，它们会独立地朝着这些目标执行。 应用程序结合了工具使用和长期记忆。<br>目前，自主代理还处于相对实验性阶段，基于其他开源项目。<br>通过在LangChain原语中实现这些开源项目，我们可以获得LangChain的好处，包括易于切换和尝试多个LLM、使用不同的向量存储器作为内存、使用LangChain的工具集。</p>
+<h6 id="Baby-AGI-Original-Repo-opens-in-a-new-tab"><a href="#Baby-AGI-Original-Repo-opens-in-a-new-tab" class="headerlink" title="Baby AGI( Original Repo(opens in a new tab) )"></a>Baby AGI( <a target="_blank" rel="noopener" href="https://github.com/yoheinakajima/babyagi">Original Repo(opens in a new tab)</a> )<a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents#baby-agioriginal-repo"></a></h6><ul>
+<li><a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents/baby_agi">Baby AGI</a>: 一份教程实现了使用LLM Chains的BabyAGI.</li>
+<li><a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents/baby_agi_with_agent">Baby AGI with Tools</a>:在以上教程的基础上构建，这个例子使用了具有执行工具的代理，从而使其实际执行行动。</li>
+</ul>
+<h6 id="AutoGPT-Original-Repo-opens-in-a-new-tab"><a href="#AutoGPT-Original-Repo-opens-in-a-new-tab" class="headerlink" title="AutoGPT( Original Repo(opens in a new tab) )"></a>AutoGPT( <a target="_blank" rel="noopener" href="https://github.com/Significant-Gravitas/Auto-GPT">Original Repo(opens in a new tab)</a> )<a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents#autogptoriginal-repo"></a></h6><ul>
+<li><a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents/autogpt">AutoGPT</a>: 一份使用LangChain基元实现AutoGPT的教程。</li>
+<li><a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents/marathon_times">WebSearch Research Assistant</a>: 一份教程，展示了如何使用AutoGPT加上特定的工具作为研究助手，可以使用网络进行搜索。</li>
+</ul>
+<h6 id="MetaPrompt-Original-Repo-opens-in-a-new-tab"><a href="#MetaPrompt-Original-Repo-opens-in-a-new-tab" class="headerlink" title="MetaPrompt( Original Repo(opens in a new tab) )"></a>MetaPrompt( <a target="_blank" rel="noopener" href="https://github.com/ngoodman/metaprompt">Original Repo(opens in a new tab)</a> )<a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents#metapromptoriginal-repo"></a></h6><ul>
+<li><a target="_blank" rel="noopener" href="https://www.langchain.asia/use_cases/autonomous_agents/meta_prompt">Meta-Prompt</a>: 一份使用LangChain基元实现Meta-Prompt的教程。</li>
+</ul>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://www.langchain.asia/">LangChain中文网: 500页超详细中文文档教程，助力LLM&#x2F;chatGPT应用开发</a></li>
 <li><a target="_blank" rel="noopener" href="https://ningshixian.github.io/2023/04/18/2023-04-18-LangChain%20%E5%AE%9E%E6%88%98/">LangChain 实战 - 神的个人博客 (ningshixian.github.io)</a></li>
 <li><a target="_blank" rel="noopener" href="https://python.langchain.com/docs/get_started/introduction">Introduction | 🦜️🔗 Langchain</a></li>
-<li></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/UnyVoUHEuPBtL5T4vfr2lg">很火的 LangChain 是个什么东东？ (qq.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://cookbook.langchain.com.cn/docs/langchain-agents/">超能力对话代理 (Agents) 的超级 LLMs | 🦜️🔗 Langchain</a></li>
+<li>&#x3D;&#x3D;<a target="_blank" rel="noopener" href="https://react-lm.github.io/">ReAct: Synergizing Reasoning and Acting in Language Models (react-lm.github.io)</a>&#x3D;&#x3D;</li>
+</ul>
+<h1 id="工具包"><a href="#工具包" class="headerlink" title="工具包"></a>工具包</h1><ul>
+<li>Gradio  快速创建web应用</li>
 </ul>
 
       
