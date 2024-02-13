@@ -23,7 +23,7 @@
   <meta name="description" content="LangChainLangChain是什么LangChain 是一种创新框架，正在彻底改变我们开发由语言模型驱动的应用程序的方式。 通过引入先进的原理，LangChain 正在重新定义传统 API 所能实现的限制。此外，LangChain 应用程序具有智能代理的特性，使语言模型能够与环境进行互动和自适应。 LangChain 由多个模块组成。正如其名称所示，LangChain 的主要目的是将这些模">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Langchain学习">
-<meta property="og:url" content="https://oshixiaoxiliu.github.io/hh/2024/02/11/Langchain%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:url" content="https://oshixiaoxiliu.github.io/hh/2024/02/11/LangChain%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="hh的学习笔记">
 <meta property="og:description" content="LangChainLangChain是什么LangChain 是一种创新框架，正在彻底改变我们开发由语言模型驱动的应用程序的方式。 通过引入先进的原理，LangChain 正在重新定义传统 API 所能实现的限制。此外，LangChain 应用程序具有智能代理的特性，使语言模型能够与环境进行互动和自适应。 LangChain 由多个模块组成。正如其名称所示，LangChain 的主要目的是将这些模">
 <meta property="og:locale">
@@ -32,12 +32,12 @@
 <meta property="og:image" content="https://oshixiaoxiliu.github.io/hh/images/Langchain%E5%AD%A6%E4%B9%A0-20240211-235542092.png">
 <meta property="og:image" content="https://oshixiaoxiliu.github.io/hh/images/Langchain%E5%AD%A6%E4%B9%A0-20240212-001422861.png">
 <meta property="article:published_time" content="2024-02-11T07:24:00.000Z">
-<meta property="article:modified_time" content="2024-02-11T16:25:25.121Z">
+<meta property="article:modified_time" content="2024-02-13T08:15:23.142Z">
 <meta property="article:author" content="hh">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://oshixiaoxiliu.github.io/hh/images/Langchain%E5%AD%A6%E4%B9%A0-20240211-153557450.png">
 
-<link rel="canonical" href="https://oshixiaoxiliu.github.io/hh/2024/02/11/Langchain%E5%AD%A6%E4%B9%A0/">
+<link rel="canonical" href="https://oshixiaoxiliu.github.io/hh/2024/02/11/LangChain%E5%AD%A6%E4%B9%A0/">
 
 
 <script id="page-configurations">
@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://oshixiaoxiliu.github.io/hh/2024/02/11/Langchain%E5%AD%A6%E4%B9%A0/">
+    <link itemprop="mainEntityOfPage" href="https://oshixiaoxiliu.github.io/hh/2024/02/11/LangChain%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/hh/images/avatar.gif">
@@ -185,7 +185,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2024-02-12 00:25:25" itemprop="dateModified" datetime="2024-02-12T00:25:25+08:00">2024-02-12</time>
+                <time title="Modified: 2024-02-13 16:15:23" itemprop="dateModified" datetime="2024-02-13T16:15:23+08:00">2024-02-13</time>
               </span>
 
           
@@ -328,7 +328,7 @@
 </ul>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="chat-model-是什么？"><a href="#chat-model-是什么？" class="headerlink" title="chat model 是什么？"></a>chat model 是什么？</h2><p>聊天模型是语言模型的一种变体。 虽然聊天模型在内部使用语言模型，但它们公开的接口略有不同。 它们不是公开“文本输入，文本输出”API，而是公开一个接口，其中“聊天消息”是输入和输出。</p>
 <p>聊天模型API是相当新的，因此我们仍在探索正确的抽象。</p>
-<h2 id="Agent具体是怎么实现的？"><a href="#Agent具体是怎么实现的？" class="headerlink" title="Agent具体是怎么实现的？"></a>Agent具体是怎么实现的？</h2><p>**&#x3D;&#x3D;代理使用LLM（语言模型)来确定应采取哪些操作以及以何顺序执行这些操作&#x3D;&#x3D;**。<br>动作可能是使用工具并观察其输出，或向用户返回响应。<br>以下是LangChain中可用的代理：</p>
+<h2 id="Agent具体是怎么实现的？"><a href="#Agent具体是怎么实现的？" class="headerlink" title="Agent具体是怎么实现的？"></a>Agent具体是怎么实现的？</h2><p>&#x3D;&#x3D;<strong>代理使用LLM（语言模型)来确定应采取哪些操作以及以何顺序执行这些操作</strong>&#x3D;&#x3D;。<br>动作可能是使用工具并观察其输出，或向用户返回响应。<br>以下是LangChain中可用的代理：</p>
 <ul>
 <li><code>zero-shot-react-description</code> 此代理使用ReAct框架，&#x3D;&#x3D;仅基于工具的描述来确定要使用的工具。&#x3D;&#x3D;<ul>
 <li><em>Zero-shot</em> 意味着代理 (Agents) 仅在当前操作上起作用——它没有 <em>记忆_。它使用 <em>ReAct</em> 框架根据工具的 <code>描述 description</code> 来决定使用哪个工具。可以将其视为 LLM 可以循环进行</em> <em>Re</em> <em>asoning 和</em> <em>Act</em> _ion 步骤的过程。它启用了一个多步骤的过程来识别答案。</li>
@@ -383,7 +383,10 @@
     <a href="/hh/2024/02/11/create-a-blog/" rel="prev" title="obsidian + hexo + github pages 搭建博客系统">
       <i class="fa fa-chevron-left"></i> obsidian + hexo + github pages 搭建博客系统
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/hh/2024/02/12/LLM%E7%9B%B8%E5%85%B3%E4%BB%93%E5%BA%93/" rel="next" title="LLM相关仓库">
+      LLM相关仓库 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -456,7 +459,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/hh/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
